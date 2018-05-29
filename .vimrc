@@ -59,3 +59,6 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 " Jump to matching end tag
 filetype plugin on
 runtime macros/matchit.vim
+
+" Shortcut to codefold a C function                                                                                                   
+:nnoremap <leader>} :mark a<cr>%zf'a
