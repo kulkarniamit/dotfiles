@@ -56,3 +56,6 @@ autocmd BufWinEnter *.* silent loadview
 " vim somehow confuses md code with modula2, correct it
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 
+" Jump to matching end tag
+filetype plugin on
+runtime macros/matchit.vim
