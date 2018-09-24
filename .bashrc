@@ -8,3 +8,6 @@ alias svni='svn info'
 alias svns='svn stat -q'
 alias uu='. uu '
 alias rgrep='grep -I -n --exclude-dir=.svn -r'
+
+# Auto correct typos in cd command path
+shopt -s cdspell
