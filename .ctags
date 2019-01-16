@@ -1,0 +1,10 @@
+--recurse=yes
+--excmd=number
+--exclude=.git
+--exclude=BUILD
+--exclude=.svn
+--exclude=*.js
+--exclude=vendor/*
+--exclude=node_modules/*
+--exclude=db/*
+--exclude=log/*
