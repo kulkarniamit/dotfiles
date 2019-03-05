@@ -13,13 +13,6 @@ set splitright
 " Open new horizontal splits at the bottom
 set splitbelow
 
-" Shortcut to save a document in INSERT and NORMAL mode
-:inoremap <c-d> <esc>:w<cr>a
-:nnoremap <c-d> :w<cr>
-
-" Shortcut to jump to the next buffer
-:nnoremap <c-n> :bn<cr>
-
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
@@ -50,8 +43,8 @@ autocmd BufWinEnter *.* silent loadview
 :nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Create abbreviations to prevent typos
-:iabbrev adn and 
-:iabbrev teh the 
+:iabbrev adn and
+:iabbrev teh the
 
 " vim somehow confuses md code with modula2, correct it
 autocmd BufNewFile,BufRead *.md set filetype=markdown
@@ -60,5 +53,5 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 filetype plugin on
 runtime macros/matchit.vim
 
-" Shortcut to codefold a C function                                                                                                   
+" Shortcut to codefold a C function
 :nnoremap <leader>} :mark a<cr>%zf'a
