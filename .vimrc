@@ -38,9 +38,16 @@ autocmd BufWinEnter *.* silent loadview
 " Create a shortcut to insert if condition in C files
 :autocmd FileType c :iabbrev <buffer> iff if(){}<esc>i
 
-" Create shortcut to load vimrc file and source it after editing
-:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-:nnoremap <leader>sv :source $MYVIMRC<cr>
+augroup AutoSaveFolds
+" Make sure we've a '~/.vim/' directory with write permissions for user
+" Views are stored in '~/.vim/view` directory by default
+" More info: 
+" :help mkview
+" :help autocmd!
+  autocmd!
+  au BufWinLeave *.* mkview
+  au BufWinEnter *.* silent loadview
+augroup END
 
 " Create abbreviations to prevent typos
 :iabbrev adn and
