@@ -62,3 +62,9 @@ runtime macros/matchit.vim
 
 " Shortcut to codefold a C function
 :nnoremap <leader>} :mark a<cr>%zf'a
+
+" Shortcut to jump to the previous enclosing '{' in a block (C language)
+" Useful to jump to beginning of a function by repeated use of this shortcut
+" [[ cannot be used because it requires function block braces to be in column 1
+" and we don't have it in first column most of the times
+:nnoremap bb [{
