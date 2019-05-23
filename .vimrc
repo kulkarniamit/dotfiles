@@ -13,6 +13,10 @@ set splitright
 " Open new horizontal splits at the bottom
 set splitbelow
 
+" Set a mapleader
+" Replace ',' with anything comfortable
+let mapleader=","
+
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
