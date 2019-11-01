@@ -33,3 +33,21 @@ function pcalc(){
     #   *                  and so on...
     python3 -c "print($1)"
 }
+
+function get-biggest-files(){
+  # List the largest files of a given directory (default: top 5)
+  if [ ! -z "$1" -a "$1" == "-h" ]; then
+    echo "Usage: "
+    echo "get-biggest-files [<directory_path>] [<listing_count>]"
+    return
+  fi
+  PWD=$(pwd)"/"
+  # Set the current directory path as default path
+  DIR_PATH=${1:-$PWD}
+  # Strip the trailing slash for consistent paths
+  DIR_PATH=${DIR_PATH%/}
+  # Debugging
+  echo "Path to be searched: "$DIR_PATH
+  du -hs "$DIR_PATH"/* | sort -rh | head -${2:-5}
+}
+
