@@ -72,3 +72,36 @@ runtime macros/matchit.vim
 " [[ cannot be used because it requires function block braces to be in column 1
 " and we don't have it in first column most of the times
 :nnoremap cc [{
+
+" Vertical split with find command
+function! Vspf(fname)
+"    echom a:fname
+    let l:flist = split(system('find . -name '.a:fname), '\n')
+    if len(l:flist) < 1
+        echo a:fname." not found"
+        return
+    endif
+    let l:chosen_file = l:flist[0]
+    for i in l:flist
+        execute "badd ".i
+    endfor
+    execute "vsp ".l:chosen_file
+endfunction
+command! -nargs=* Vf :call Vspf(<f-args>)
+
+" Open tab page of a file with find command
+function! Openfileintab(fname)
+"    echom a:fname
+    let l:flist = split(system('find . -name '.a:fname), '\n')
+    if len(l:flist) < 1
+        echo a:fname." not found"
+        return
+    endif
+    let l:chosen_file = l:flist[0]
+    for i in l:flist
+        execute "badd ".i
+    endfor
+    execute "tabe ".l:chosen_file
+endfunction
+command! -nargs=* Ot :call Openfileintab(<f-args>)
+
