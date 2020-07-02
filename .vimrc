@@ -17,6 +17,9 @@ set splitbelow
 " Replace ',' with anything comfortable
 let mapleader=","
 
+"" Cycle through open buffers
+:nnoremap bc :bnext<cr>
+
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
