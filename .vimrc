@@ -76,8 +76,8 @@ runtime macros/matchit.vim
 " and we don't have it in first column most of the times
 :nnoremap cc [{
 
-" Vertical split with find command
-function! Vspf(fname)
+" Find and open a file buffer
+function! Findandopen(fname, command)
 "    echom a:fname
     let l:flist = split(system('find . -name '.a:fname), '\n')
     if len(l:flist) < 1
@@ -88,23 +88,14 @@ function! Vspf(fname)
     for i in l:flist
         execute "badd ".i
     endfor
-    execute "vsp ".l:chosen_file
+    execute a:command." ".l:chosen_file
 endfunction
-command! -nargs=* Vf :call Vspf(<f-args>)
 
-" Open tab page of a file with find command
-function! Openfileintab(fname)
-"    echom a:fname
-    let l:flist = split(system('find . -name '.a:fname), '\n')
-    if len(l:flist) < 1
-        echo a:fname." not found"
-        return
-    endif
-    let l:chosen_file = l:flist[0]
-    for i in l:flist
-        execute "badd ".i
-    endfor
-    execute "tabe ".l:chosen_file
-endfunction
-command! -nargs=* Ot :call Openfileintab(<f-args>)
+" Find and open a file in vertical split
+command! -nargs=* Vf :call Findandopen(<f-args>, "vsp")
 
+" Find and open a file buffer
+command! -nargs=* Bo :call Findandopen(<f-args>,"buffer")
+
+" Find and open tab page of a file
+command! -nargs=* Ot :call Findandopen(<f-args>,"tabedit")
