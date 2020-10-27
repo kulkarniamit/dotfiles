@@ -33,6 +33,19 @@ function pcalc(){
     python3 -c "print($1)"
 }
 
+function runin() {
+    # Run a command (with args) in a given directory
+    # Usage: runin <absolute_directory_path> <cmd>
+    if [ ! -d "$1" ]; then
+        echo "[ERR] $1: No such directory, please specify full path of a directory"
+        return 1
+    fi
+    pushd $1 > /dev/null
+    shift
+    $@
+    popd > /dev/null
+}
+
 function get-biggest-files(){
   # List the largest files of a given directory (default: top 5)
   if [ ! -z "$1" -a "$1" == "-h" ]; then
