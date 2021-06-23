@@ -12,6 +12,20 @@ alias pjq="python -m json.tool" # Show web responses in pretty json using Python
 # Auto correct typos in cd command path
 shopt -s cdspell
 
+function createrandomfile() {
+# Create a file of given size with random bytes
+    if [ $# -lt 1 ]; then
+        echo "[ERR] Please enter the number of bytes for the file"
+        echo -e "Usage: createrandomfile <number_of_bytes> [file_name]\n"
+        return 1
+    fi
+    _bytes=$1
+    _filename=${2:-$_bytes-bytes-file}
+    echo "[LOG] Creating $_filename ($_bytes bytes)"
+    < /dev/urandom tr -dc "[:alnum:]" | head -c$_bytes > $_filename
+    echo -e "[LOG] File created: $_filename\n"
+}
+
 function fopen(){
     # Search for a file pattern in the current directory
     # Resulting files of find command are provided as arguments 
